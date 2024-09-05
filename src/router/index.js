@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/homeView.vue'
+import RecipeView from '../views/recipesView.vue'
+import addRecipeView from '../views/addRecipeView.vue'
+import singleRecipeView from '../views/recipeView.vue'
+import editRecipeView from '../views/editRecipeView.vue'
+import notFound from '../views/notFoundView.vue'
 
 const routes = [
   {
@@ -8,12 +13,29 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path:'/recipes',
+    name:'recipes',
+    component:RecipeView
+  },
+  {
+    path:'/recipes/:id',
+    name:"recipe",
+    component: singleRecipeView
+  },
+  {
+    path:'/recipes/add',
+    name:'addRecipe',
+    component:addRecipeView,
+  },
+  {
+    path:'/recipes/edit/:id',
+    name:'editRecipe',
+    component:editRecipeView
+  },
+  {
+    path:'/:catchAll(.*)',
+    name:'not-found',
+    component:notFound
   }
 ]
 
